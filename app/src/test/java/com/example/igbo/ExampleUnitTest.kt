@@ -1,4 +1,4 @@
-package com.example.miwokapp
+package com.example.igbo
 
 import org.junit.Test
 

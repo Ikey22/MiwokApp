@@ -1,4 +1,4 @@
-package com.example.miwokapp
+package com.example.igbo
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Find the View that shows the phrases category
-        val phrases = findViewById<TextView>(R.id.phrases)
+        val phrases =  findViewById<TextView>(R.id.phrases)
 
         // Set a click listener on that View
         phrases!!.setOnClickListener { // Create a new intent to open the {@link PhrasesActivity}
