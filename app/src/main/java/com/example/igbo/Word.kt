@@ -4,7 +4,7 @@ class Word {
     var mIgboTranslation:String? = null
     var mDefaultTranslation:String? = null
 
-    constructor(igboTranslation:String, defaultTranslation:String ){
+    constructor(defaultTranslation:String,igboTranslation:String ){
         this.mIgboTranslation=igboTranslation
         this.mDefaultTranslation = defaultTranslation
     }
