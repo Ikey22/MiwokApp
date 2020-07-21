@@ -1,11 +1,11 @@
-package com.example.miwokapp
+package com.example.igbo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class FamilyActivity : AppCompatActivity() {
+class PhrasesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_family)
+        setContentView(R.layout.activity_phrases)
     }
 }

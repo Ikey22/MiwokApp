@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.miwokapp">
+    package="com.example.igbo">
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Igbo"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PhrasesActivity"></activity>
-        <activity android:name=".ColorsActivity" />
-        <activity android:name=".NumbersActivity" />
-        <activity android:name=".FamilyActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.igbo.PhrasesActivity"
+            android:label="@string/category_phrases"/>
+        <activity android:name="com.example.igbo.ColorsActivity"
+            android:label="@string/category_colors"/>
+        <activity android:name="com.example.igbo.NumbersActivity"
+            android:label="@string/category_numbers"/>
+        <activity android:name="com.example.igbo.FamilyActivity"
+            android:label="@string/category_family"/>
+        <activity android:name="com.example.igbo.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
