@@ -11,27 +11,20 @@ class ColorsActivity : AppCompatActivity() {
 
 
         val words = ArrayList<Word>()
-//
-//        val w = Word("lutti", "one")
-//        words.add(w)
-        words.add(Word("black", "oji"))
-        words.add(Word("blue", "amaloji"))
-        words.add(Word("brown", "uri"))
-        words.add(Word("green", "ndụ-ndu"))
-        words.add(Word("grey", " ntụ-ntụ"))
-        words.add(Word("orange", "uhie-edo"))
-        words.add(Word("pink", "uhie ọcha"))
-        words.add(Word("purple", "ododo"))
-        words.add(Word("white", "ọcha"))
-        words.add(Word("yellow", "edo"))
+        words.add(Word("black", "oji",R.drawable.color_black,R.raw.color_black))
+        words.add(Word("brown", "uri",R.drawable.color_brown,R.raw.color_brown))
+        words.add(Word("green", "ndụ-ndu",R.drawable.color_green,R.raw.number_one))
+        words.add(Word("grey", " ntụ-ntụ",R.drawable.color_gray,R.raw.number_one))
+        words.add(Word("red", "acha ọbara ọbara",R.drawable.color_red,R.raw.number_one))
+        words.add(Word("dusty yellow", "edo edo edo",R.drawable.color_dusty_yellow,R.raw.number_one))
+        words.add(Word("white", "ọcha",R.drawable.color_white,R.raw.number_one))
+        words.add(Word("mustard yellow", "Mọstad edo edo",R.drawable.color_mustard_yellow,R.raw.number_one))
 
 
 
-        val adapter :WordAdapter = WordAdapter(this, words)
+        val adapter :WordAdapter = WordAdapter(this, words,R.color.category_colors)
         val listView:ListView = findViewById(R.id.list)
         listView.adapter=adapter
-
-
 
     }
 }
