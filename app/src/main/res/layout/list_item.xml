@@ -2,22 +2,52 @@
 <LinearLayout 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="#FFF7DA"
+    android:minHeight="@dimen/list_item_height"
+    >
+
+    <ImageView
+        android:id="@+id/images_view"
+        android:layout_width="@dimen/list_item_height"
+        android:layout_height="@dimen/list_item_height"
+
+        />
+
+<LinearLayout
+    android:id="@+id/text_container"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="88dp"
+    android:padding="16dp"
+    >
+    <TextView
+        android:id="@+id/default_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="bottom"
+        tools:text = "one"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        />
 
     <TextView
         android:id="@+id/igbo_text_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="top"
         tools:text= "otu"
-        />
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
 
-    <TextView
-        android:id="@+id/default_text_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text = "one"
         />
+</LinearLayout>
 </LinearLayout>
