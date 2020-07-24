@@ -28,7 +28,7 @@ class WordAdapter:ArrayAdapter<Word> {
 
         val currentWord : Word? = getItem(position)
 
-        val miwokTextView = listItemView?.findViewById<TextView>(com.example.igbo.R.id.igbo_text_view)
+        val miwokTextView = listItemView?.findViewById<TextView>(com.example.igbo.R.id.miwok_text_view)
         miwokTextView?.text = currentWord?.getMiwokTranslation()
 
         val defaultTextView = listItemView?.findViewById<TextView>(com.example.igbo.R.id.default_text_view)

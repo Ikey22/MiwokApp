@@ -1,5 +1,7 @@
 package com.example.igbo
 
+import android.content.Context
+import android.media.AudioManager
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,15 +12,34 @@ import android.widget.Toast
 class FamilyActivity : AppCompatActivity() {
 
     private var mediaPlayer: MediaPlayer? = null
+    private lateinit var mAudioManager: AudioManager
 
     var mp: MediaPlayer.OnCompletionListener =
         MediaPlayer.OnCompletionListener { releaseMediaPlayer() }
 
+    private var mOnAudioFocusChangeListener: AudioManager.OnAudioFocusChangeListener = AudioManager.OnAudioFocusChangeListener {
+        if (it == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT || it == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK){
+            mediaPlayer!!.pause()
+            mediaPlayer!!.seekTo(0)
+        }
+        else if (it == AudioManager.AUDIOFOCUS_GAIN){
+            mediaPlayer!!.start()
+        }
+        else if(it == AudioManager.AUDIOFOCUS_LOSS) {
+            releaseMediaPlayer()
+        }
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.word_list)
+
+        AudioManager.OnAudioFocusChangeListener {AudioManager.OnAudioFocusChangeListener {
+
+        }}
+
+        mAudioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
 
 
         val words = ArrayList<Word>()
@@ -44,18 +65,29 @@ class FamilyActivity : AppCompatActivity() {
 
             val word: Word = words[i]
 
+            val result = mAudioManager.requestAudioFocus(
+                mOnAudioFocusChangeListener,
+                AudioManager.STREAM_MUSIC,
+                AudioManager.AUDIOFOCUS_GAIN
+            )
 
-            releaseMediaPlayer()
-            Toast.makeText(this, "List item clicked $i", Toast.LENGTH_SHORT).show()
-            mediaPlayer = MediaPlayer.create(this, word.getAudioResource()!!)
-            mediaPlayer!!.start()
+            if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+                releaseMediaPlayer()
+                mediaPlayer = MediaPlayer.create(this, word.getAudioResource()!!)
+                mediaPlayer!!.start()
 
-            mediaPlayer!!.setOnCompletionListener {
-                mp
+                mediaPlayer!!.setOnCompletionListener {
+                    mp
+                }
             }
 
 
         }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        releaseMediaPlayer()
     }
 
     private fun releaseMediaPlayer() {
@@ -63,7 +95,6 @@ class FamilyActivity : AppCompatActivity() {
             mediaPlayer!!.release()
             mediaPlayer = null
         }
-
-
+        mAudioManager.abandonAudioFocus(mOnAudioFocusChangeListener)
     }
 }
