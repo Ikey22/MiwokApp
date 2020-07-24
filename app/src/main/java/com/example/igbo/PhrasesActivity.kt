@@ -15,7 +15,7 @@ class PhrasesActivity : AppCompatActivity() {
         MediaPlayer.OnCompletionListener { releaseMediaPlayer() }
 
 
-    private lateinit var mediaPlayer : MediaPlayer
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,12 +66,6 @@ class PhrasesActivity : AppCompatActivity() {
             mediaPlayer = null
         }
 
-            val word:Word =  words.get(i)
-
-            Toast.makeText(this, "List item clicked $i", Toast.LENGTH_SHORT).show()
-            mediaPlayer = MediaPlayer.create(this, word.getAudioResource()!!)
-            mediaPlayer.start()
 
     }
 }
-    }
