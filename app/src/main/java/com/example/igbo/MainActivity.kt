@@ -19,8 +19,6 @@ class MainActivity : AppCompatActivity() {
         // Set a click listener on that View
         numbers!!.setOnClickListener { // Create a new intent to open the {@link NumbersActivity}
             val numbersIntent = Intent(this@MainActivity, NumbersActivity::class.java)
-
-            Toast.makeText(this, "Numbers button clicked", Toast.LENGTH_SHORT).show()
             // Start the new activity
             startActivity(numbersIntent)
         }
