@@ -9,7 +9,13 @@ import android.widget.Toast
 
 class FamilyActivity : AppCompatActivity() {
 
+    private var mediaPlayer: MediaPlayer? = null
+
+    var mp: MediaPlayer.OnCompletionListener =
+        MediaPlayer.OnCompletionListener { releaseMediaPlayer() }
+
     private lateinit var mediaPlayer:MediaPlayer
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +42,29 @@ class FamilyActivity : AppCompatActivity() {
         listView.adapter=adapter
 
         listView.onItemClickListener = AdapterView.OnItemClickListener { adapterView, view, i, l ->
+
+            val word: Word = words[i]
+
+
+            releaseMediaPlayer()
+            Toast.makeText(this, "List item clicked $i", Toast.LENGTH_SHORT).show()
+            mediaPlayer = MediaPlayer.create(this, word.getAudioResource()!!)
+            mediaPlayer!!.start()
+
+            mediaPlayer!!.setOnCompletionListener {
+                mp
+            }
+
+
+        }
+    }
+
+    private fun releaseMediaPlayer() {
+        if (mediaPlayer != null) {
+            mediaPlayer!!.release()
+            mediaPlayer = null
+        }
+
             val word:Word =  words.get(i)
 
             Toast.makeText(this, "List item clicked $i", Toast.LENGTH_SHORT).show()
