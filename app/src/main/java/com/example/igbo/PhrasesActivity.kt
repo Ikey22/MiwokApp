@@ -35,6 +35,11 @@ class PhrasesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.word_list)
 
+
+        val aC = supportActionBar
+        aC!!.setDisplayHomeAsUpEnabled(true)
+
+
         AudioManager.OnAudioFocusChangeListener {AudioManager.OnAudioFocusChangeListener {
 
         }}
@@ -96,5 +101,10 @@ class PhrasesActivity : AppCompatActivity() {
             mediaPlayer = null
         }
         mAudioManager.abandonAudioFocus(mOnAudioFocusChangeListener)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

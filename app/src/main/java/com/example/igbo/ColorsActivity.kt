@@ -1,6 +1,7 @@
 package com.example.igbo
 
 import android.content.Context
+import android.content.Intent
 import android.media.AudioManager
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
@@ -12,12 +13,13 @@ import android.widget.Toast
 class ColorsActivity : AppCompatActivity() {
 
 
+
     private var mediaPlayer: MediaPlayer? = null
     private lateinit var mAudioManager: AudioManager
 
+
     var mp: MediaPlayer.OnCompletionListener =
         MediaPlayer.OnCompletionListener { releaseMediaPlayer() }
-
     private var mOnAudioFocusChangeListener: AudioManager.OnAudioFocusChangeListener = AudioManager.OnAudioFocusChangeListener {
         if (it == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT || it == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK){
             mediaPlayer!!.pause()
@@ -34,6 +36,9 @@ class ColorsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.word_list)
+
+        val aC = supportActionBar
+        aC!!.setDisplayHomeAsUpEnabled(true)
 
         AudioManager.OnAudioFocusChangeListener {AudioManager.OnAudioFocusChangeListener {
 
@@ -91,5 +96,10 @@ class ColorsActivity : AppCompatActivity() {
             mediaPlayer = null
         }
         mAudioManager.abandonAudioFocus(mOnAudioFocusChangeListener)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }
